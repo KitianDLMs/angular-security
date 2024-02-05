@@ -1,0 +1,27 @@
+<form [formGroup]="loginForm">
+    <p class="text-danger">{{ loginError }}</p>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input formControlName="username" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div *ngIf="email.invalid && (email.dirty || email.touched)"  class="text-danger">
+
+        <div *ngIf="email.errors?.['required']">el email es requerido.</div>
+        <div *ngIf="email.errors?.['email']">
+            el email debe tener un formato valido.
+        </div>
+      
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+      <div *ngIf="password.invalid && (password.dirty || password.touched)"  class="text-danger">
+ 
+        <div *ngIf="password.errors?.['required']">el password es requerido.</div>
+      
+      </div>
+    </div>
+   
+    <button type="submit" class="btn btn-primary" (click)="login()">Iniciar sesión</button>
+</form>
